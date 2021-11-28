@@ -13,3 +13,86 @@
  *= require_tree .
  *= require_self
  */
+
+ .dropbtn {
+  background-color: rgb(80, 26, 145);
+  color: white;
+  padding: 16px;
+  font-size: 22px;
+  border: 1px solid white;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: rgb(136, 75, 209);}
+
+
+
+.navbar_link {
+  margin-left: 15px;
+  color: white;
+  font-size: 22px;
+}
+
+.navbar_link:hover {
+  color: white!important;
+  font-weight: 600;
+}
+
+.navbar-custom {
+  background-color: rgb(80, 26, 145);
+}
+
+.navbar_link_homepage_icon {
+  border: 1px solid white;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+}
+.navbar_link_homepage_icon:hover {
+  color: white;
+  text-decoration: none;
+  background-color: rgb(136, 75, 209);
+}
+
+
+* {
+  font-family: cursive;
+ }
