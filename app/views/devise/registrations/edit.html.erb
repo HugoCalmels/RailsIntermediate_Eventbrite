@@ -40,14 +40,15 @@
     <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
   </div>
   <% end %>
+  <br />
   <%= f.submit "Editer", class:"btn btn-lg btn-primary"%>
   <% end %>
 
-  <br />
-  <h3>Supprimer son compte</h3>
+  <hr>
 
-  <p>Pas content ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sur ?" }, method: :delete, class:"btn btn-sm btn-danger"%></p>
-  
+
+  <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sur ?" }, method: :delete, class:"btn btn-sm btn-danger"%>
+  <br />
   <%= button_to "Retour", :back, class:"btn btn-sm btn-primary" %>
 </div>
 </div>
