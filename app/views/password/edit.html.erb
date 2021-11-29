@@ -1,0 +1,8 @@
+<h1>Password#edit</h1>
+<p>Find me in app/views/password/edit.html.erb</p>
+
+<%= form_tag(user_path(@user.id), method: 'patch') do %>
+  <%= text_area_tag(:email) %>
+  
+  <%= submit_tag("Submit") %>
+<% end %>
