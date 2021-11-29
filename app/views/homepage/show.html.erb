@@ -1,29 +1,29 @@
-<h1>Homepage#show</h1>
-<p>Find me in app/views/homepage/show.html.erb</p>
+<br />
+<br />
+<center><%= link_to "Créer son Event", new_event_path,  class: "btn btn-lg btn-primary" %></center>
 
+<div class="card-container">
+<div class="container">
+  <div class="row no-gutters ">
 
-<ul>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    </li>
-
-    <li>
-      Voici ton email : <%= current_user.email %>
-    </li>
-
-    <li>
-      <%= link_to "Edit email / password", edit_user_registration_path %>
-    </li>
-
-  <% else %>
-    <li>    
-      <%= link_to "Sign in", new_user_session_path %>
-    </li>
-
-    <li>
-      <%= link_to "Sign up", new_user_registration_path %>
-    </li>
-
+<% Event.all.each do |event| %>
+  <div class="col-sm-4 col-custom">
+      <div class="card border-0" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><strong><%= event.title %></strong></h5>
+          <p class="card-text">Date : <%= event.start_date.strftime("%d of %B, %Y") %></p>
+          <p class="card-text">Heure : <%= event.start_hour %></p>
+          <p class="card-text">Durée : <%= event.duration %></p>
+          <p class="card-text">Lieux : <%= event.location %></p>
+          <p class="card-text">Prix: <%= event.price %></p>
+          <p class="card-text">Organisateur : <%= event.organizer.first_name %><%= event.organizer.last_name %></p>
+          <center><%= link_to "Détails", event_path(event.id),  class: "btn btn-primary" %></center>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+
+  </div>
+  </div>
+  </div>
+

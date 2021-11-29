@@ -116,3 +116,31 @@
   background-color: black;
   height: 1px;
 }
+
+.card-container {
+  margin-top: 60px;
+}
+
+.card {
+  margin-top: 40px;
+  margin: 0 auto; 
+  float: none;
+  margin-bottom: 40px;
+}
+
+.card-body {
+  border: 2px solid rgb(80, 26, 145)!important;
+  border-radius: 5%;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: rgb(80, 26, 145)!important;
+}
+
+.btn-primary:hover {
+  background-color: rgb(136, 75, 209)!important;
+}
+
+.form-custom {
+  margin-top: 50px;
+}

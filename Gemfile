@@ -5,6 +5,8 @@ ruby '3.0.0'
 # gem pack from the Eventbrite project
 gem 'devise', '~> 4.8'
 gem 'dotenv-rails'
+gem 'faker'
+gem 'table_print'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
