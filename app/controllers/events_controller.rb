@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
   before_action :current_event, only: [:show, :edit, :update, :destroy]
+  before_action :current_attendance, only: [:show]
 
   def index
   end
 
   def show
+    @attendances = @event.attendances
   end
 
   def new
@@ -48,7 +50,7 @@ class EventsController < ApplicationController
       @event.start_date = params[:start_date]
     elsif params[:start_hour] != '' 
       @event.start_hour = params[:start_hour]
-    elsif params[:duration] != "--:--" || params[:duration] != '' 
+    elsif params[:duration] != "--:--" && params[:duration] != '' 
       @event.duration = params[:duration]
     elsif params[:description] != '' 
       @event.description = params[:description]
@@ -62,12 +64,19 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event.destroy
+
+    redirect_to root_path
   end
 
   private
   
   def current_event
     @event = Event.find(params[:id])
+  end
+
+  def current_attendance
+    @attendance = current_event.attendances.find_by(user: current_user)
   end
 
 end

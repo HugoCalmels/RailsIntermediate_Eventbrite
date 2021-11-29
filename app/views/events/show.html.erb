@@ -1,9 +1,19 @@
 <center>
 <br />
 <h3><strong><%= @event.title %></strong></h3>
-<p><button>Rejoindre</button>&nbsp;<button>Editer</button>&nbsp;<button>Supprimer</button></p>
+
+<% if !@attendance.nil? %>
+<%= link_to "Quitter", event_attendance_path(@event.id,@attendance.id), method: "delete", data: { confirm: 'Are you sure?'},  class: "btn btn-danger" %>
+<% else %>
+<%= link_to "Rejoindre", event_attendances_path(@event.id), method: "post",  class: "btn btn-primary" %>
+<% end %>
+
+<% if @event.organizer.id  == current_user.id %>
 <%= link_to "Editer", edit_event_path(@event.id),  class: "btn btn-primary" %>
+<%= link_to "Supprimer", event_path(@event.id), method: "delete", data: { confirm: 'Etes vous sur?'},  class: "btn btn-danger" %>
+<% end %>
 <br />
+
 </center>
 
 
@@ -31,34 +41,25 @@
       <br />
       <table class="table table-bordered">
       <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Age</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Age</th>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Age</th>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Age</th>
-    </tr>
-  </tbody>
-</table>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attendances.each.with_index do |attendance, index| %>
+        <tr>
+      <th scope="row"><%= index %></th>
+      <th scope="col"><%= attendance.user.first_name %></th>
+      <th scope="col"><%= attendance.user.last_name %></th>
+      </tr>
+      <% end %>
+      
+      
+    </tbody>
+  </table>
     </div>
 
   </div>
