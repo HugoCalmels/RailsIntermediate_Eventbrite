@@ -1,2 +1,65 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<center>
+<br />
+<h3><strong><%= @event.title %></strong></h3>
+<p><button>Rejoindre</button>&nbsp;<button>Editer</button>&nbsp;<button>Supprimer</button></p>
+<%= link_to "Editer", edit_event_path(@event.id),  class: "btn btn-primary" %>
+<br />
+</center>
+
+
+
+
+<div class="container">
+  <div class="row justify-content-center ">
+    <div class="col-4">
+      <h4>Informations</h4>
+      <br />
+      <div class="event-show-infos">
+        <ul class="list-group">
+        <li class="list-group-item">Organisateur : <strong><%= @event.organizer.first_name %> <%= @event.organizer.last_name %></strong> </li>
+        <li class="list-group-item">Lieux : <strong><%= @event.location %></strong></li>
+        <li class="list-group-item">Date : <strong><%= @event.start_date.strftime("%d of %B, %Y") %></strong></li>
+        <li class="list-group-item">Heure : <strong><%= @event.start_hour %></strong></li>
+        <li class="list-group-item">Durée : <strong><%= @event.duration %></strong></li>
+        <li class="list-group-item">Prix: <strong><%= @event.price %>€</strong></li>
+        </ul>
+    
+      </div>
+    </div>
+    <div class="col-6">
+    <h4>Participants</h4>
+      <br />
+      <table class="table table-bordered">
+      <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Age</th>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Age</th>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Age</th>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+</div>

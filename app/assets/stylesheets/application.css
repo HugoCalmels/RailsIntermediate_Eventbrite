@@ -144,3 +144,7 @@
 .form-custom {
   margin-top: 50px;
 }
+
+.row-event {
+  display: flex;
+}

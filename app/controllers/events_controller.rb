@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
+  before_action :current_event, only: [:show, :edit, :update, :destroy]
+
   def index
   end
 
   def show
-    @events = Event.all
   end
 
   def new
@@ -31,4 +32,42 @@ class EventsController < ApplicationController
       render "new"
     end
   end
+
+  def edit
+  end
+  
+  def update
+
+    if params[:title] != ''
+      @event.title = params[:title]
+    elsif params[:price] != '' 
+      @event.price = params[:price]
+    elsif params[:location] != '' 
+      @event.location = params[:location]
+    elsif params[:start_date] != '' 
+      @event.start_date = params[:start_date]
+    elsif params[:start_hour] != '' 
+      @event.start_hour = params[:start_hour]
+    elsif params[:duration] != "--:--" || params[:duration] != '' 
+      @event.duration = params[:duration]
+    elsif params[:description] != '' 
+      @event.description = params[:description]
+    end
+
+    if @event.save 
+      redirect_to event_path(@event.id)
+    else  
+      render "edit"
+    end
+  end
+
+  def destroy
+  end
+
+  private
+  
+  def current_event
+    @event = Event.find(params[:id])
+  end
+
 end
