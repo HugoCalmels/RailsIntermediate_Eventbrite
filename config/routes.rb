@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'attendances/create'
   get 'attendances/destroy'
   get 'attendances/show'
+  resources :users
   resources :events do 
     resources :attendances
   end
