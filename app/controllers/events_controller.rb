@@ -28,6 +28,11 @@ class EventsController < ApplicationController
     )
     
     if @event.save
+      @attendance = Attendance.new(
+      user: current_user,
+      event: @event
+      )
+      @attendance.save
       redirect_to root_path
     else
       @event.errors.full_messages
