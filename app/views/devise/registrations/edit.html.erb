@@ -1,5 +1,12 @@
 <div class="form-custom">
-  <center><h3>Formulaire de création d'évènement</h3></center>
+  <center><h3>Editer profil</h3>
+  <br />
+  
+  <%= link_to "Changer mot de passe", password_edit_path,  class: "btn btn-sm btn-primary" %>
+  <%= link_to "Changer email", email_edit_path,  class: "btn btn-sm btn-primary" %>
+  <%= link_to "Supprimer compte", registration_path(resource_name), data: { confirm: "Etes vous sur ?" }, method: :delete, class:"btn btn-sm btn-danger"%>
+  
+  </center>
   <br />
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -11,20 +18,23 @@
           <%= f.text_field :first_name, autofocus: true, class:"form-control" %> 
         </div>
         <div class="form-group col-md-2">
+          <label for="formGroupExampleInput">Nom</label>
+          <%= f.text_field :last_name, autofocus: true, class:"form-control" %>
+        </div>
+      </div>
+    
+  
+      <div class="form-row justify-content-center text-center">
+        <div class="form-group col-md-2 ">
+          <label for="formGroupExampleInput">Mot de passe (obligatoire)</label>
+          <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control"%>
+        </div>
+        <div class="form-group col-md-1 ">
           <label for="formGroupExampleInput">Age</label>
           <br />
           <%= f.select :age, options_for_select(["10", "11", "12", "13", "14"]), :class => "form-control" %>
         </div>
-      </div>
-    
-
-      <div class="form-row justify-content-center text-center">
-      
-        <div class="form-group col-md-2 ">
-          <label for="formGroupExampleInput">Nom</label>
-          <%= f.text_field :last_name, autofocus: true, class:"form-control" %>
-        </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-1">
           <label for="formGroupExampleInput">Genre</label>
           <br />
           <%= f.select :genre, options_for_select(["Homme", "Femme"]), :class => "form-control" %>
@@ -38,80 +48,18 @@
         </div>
       </div>
 
+ 
+     
+  
+  
+
     </div>
-  <center><%= f.submit "Editer", class:"btn btn-primary"%> </center>
-  <br />
-  <center>
-    <%= link_to "Changer mot de passe", event_attendances_path(2), method: "post",  class: "btn btn-primary" %>
-    <%= link_to "Changer email", event_attendances_path(2), method: "post",  class: "btn btn-primary" %>
-  </center>
-  <% end %>
-</div>
-
-
-
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-<center>
-<div class="row row-devise">
-
-<div class="col-4 col-devise">
-<h2><strong>Editer profil</strong></h2>
-<br />
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <center><%= f.submit "Editer", class:"btn btn-primary"%>
+  <%= link_to "Retour", root_path,  class: "btn btn-primary" %>
+   </center>
   
-
-  <br />
-  <br />
-  <br />
-  <br />
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Adresse email</label>
-    <%= f.email_field :email, autofocus: true, class:"form-control" %>
-  </div>
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    
   <% end %>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Nouveau mot de passe ( laissez vide si vous ne voulez pas en changer )</label>
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
-    <% if @minimum_password_length %>
-  
-      <small><%= @minimum_password_length %> caractères minimum</small>
-    <% end %>
-  </div>
-  <div class="form-group">
-  <label for="exampleInputPassword1">Confirmation du nouveau mot de passe</label>
-  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%>
-  </div>
-  <div class="form-group">
-  <label for="exampleInputPassword1">Ancien mot de passe ( obligatoire pour confirmer les changements )</label>
-  <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control"%>
-  </div>
-  <% if devise_mapping.rememberable? %>
-  <div class="form-check">
-  <%= f.check_box :remember_me, class:"form-check-input" %>
-    <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-  </div>
-  <% end %>
-  <br />
-  <%= f.submit "Editer", class:"btn btn-lg btn-primary"%>
-  <% end %>
-
-  <hr>
-
-
-  <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sur ?" }, method: :delete, class:"btn btn-sm btn-danger"%>
-  <br />
-  <%= button_to "Retour", :back, class:"btn btn-sm btn-primary" %>
 </div>
-</div>
-</center>
+
+

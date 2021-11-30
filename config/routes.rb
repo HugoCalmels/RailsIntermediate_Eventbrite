@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'email/edit'
   get 'password/edit'
   match '/users',   to: 'users#index',   via: 'get'
   match '/users',   to: 'users#show',   via: 'get'

@@ -3,30 +3,21 @@ class AttendancesController < ApplicationController
   before_action :current_attendance, only: [:destroy]
 
   def create
+    if current_user.nil?
+      redirect_to new_user_session_path
 
-
-    if current_event.attendances.find_by(user: current_user)
-      puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-      puts "NNOOOOOOTTTT SAVED"
-      array = current_event.attendances.map do |el|
-        puts el.user.email
-        puts el.user.id
-        puts current_user.id
-        puts current_event.attendances
-      end
-      puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    elsif (current_user.first_name == "" || current_user.first_name == nil) ||
+      (current_user.last_name == "" || current_user.last_name == nil)
+      redirect_to edit_user_registration_path
+    elsif current_event.attendances.find_by(user: current_user)
       redirect_to event_path(current_event.id)
     else
-    
     @attendance = Attendance.new(
       user: current_user,
       event: current_event
     )
     @attendance.save
     redirect_to event_path(current_event)
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
-    puts "ATTENDANCE SAVED"
-    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
     end
 
   end

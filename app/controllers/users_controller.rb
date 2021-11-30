@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  include Devise::Controllers::Helpers
 
   def index
     puts "MMMMMMMMMMMMMMMM"
@@ -17,16 +17,29 @@ class UsersController < ApplicationController
   end
 
   def update
+    if !params[:email].nil?
     @user = current_user
     @user.email = params[:email]
     @user.skip_reconfirmation!
     if @user.save!
-      redirect_to root_path
+      redirect_to edit_user_registration_path
     else 
       puts "email is invalid"
       @user.errors.messages
       render "edit"
     end
+  else 
+    @user = current_user
+    @user.password = params[:password]
+    if @user.save!
+      sign_in(@user, :bypass => true)
+      redirect_to edit_user_registration_path
+    else 
+      puts "email is invalid"
+      @user.errors.messages
+      render "edit"
+    end
+  end
   end
 
 

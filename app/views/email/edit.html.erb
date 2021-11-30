@@ -1,13 +1,13 @@
 <div class="form-custom">
-  <center><h3>Changer mot de passe</h3>
+  <center><h3>Changer email</h3>
   <br />
 
   <%= form_tag(user_path(@user.id), method: 'patch') do %>
     <div class="form-group">
       <div class="form-row justify-content-center text-center">
         <div class="form-group col-md-2">
-          <label for="inputEmail4">Mot de passe</label>
-          <%= password_field_tag(:password,nil , class:"form-control") %>
+          <label for="inputEmail4">Email</label>
+          <%= email_field_tag(:email, nil, placeholder: @user.email, autofocus: true, autocomplete: "email", class:"form-control") %>
         </div>
       </div>
     </div>
@@ -17,3 +17,5 @@
 </center>
 <% end %>
 </div>
+
+
