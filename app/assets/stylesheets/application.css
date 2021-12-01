@@ -159,3 +159,8 @@
 .row-event {
   display: flex;
 }
+
+.fa-user-circle {
+  color:  rgb(80, 26, 145);
+  size: 50px;
+}

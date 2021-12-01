@@ -17,6 +17,7 @@
           <p class="card-text">Lieux : <%= event.location %></p>
           <p class="card-text">Prix: <%= event.price %></p>
           <p class="card-text">Organisateur : <%= event.organizer.first_name %><%= event.organizer.last_name %></p>
+          <p class="card-text">Nb de participants: <%= event.attendances.count %></p>
           <center><%= link_to "Détails", event_path(event.id),  class: "btn btn-primary" %></center>
         </div>
       </div>

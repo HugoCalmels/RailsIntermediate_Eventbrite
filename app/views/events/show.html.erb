@@ -1,17 +1,23 @@
 <center>
 <br />
-<h3><strong><%= @event.title %></strong></h3>
+<h3>Détails de l'évènement <strong>"<%= @event.title %>"</strong></h3>
 
 
-<% if !@attendance.nil? %>
-<%= link_to "Quitter", event_attendance_path(@event.id,@attendance.id), method: "delete", data: { confirm: 'Are you sure?'},  class: "btn btn-sm btn-danger" %>
+<% if !@attendance.nil?  %>
+  <% if @event.organizer.id  == current_user.id %>
+  <% else %>
+  <%= link_to "Quitter", event_attendance_path(@event.id,@attendance.id), method: "delete", data: { confirm: 'Are you sure?'},  class: "btn btn-sm btn-danger" %>
+  <% end %>
 <% else %>
 <%= link_to "Rejoindre", event_attendances_path(@event.id), method: "post",  class: "btn btn-sm btn-primary" %>
 <% end %>
 <%= link_to "Retour", root_path,  class: "btn btn-sm btn-primary" %>
-<% if @event.organizer.id.nil? && @event.organizer.id  == current_user.id %>
+
+
+<% if user_signed_in? && ( @event.organizer.id.nil? || @event.organizer.id  == current_user.id )%>
 <%= link_to "Editer", edit_event_path(@event.id),  class: "btn btn-sm btn-primary" %>
 <%= link_to "Supprimer", event_path(@event.id), method: "delete", data: { confirm: 'Etes vous sur?'},  class: "btn btn-sm btn-danger" %>
+
 <% end %>
 <br />
 
@@ -32,7 +38,8 @@
         <li class="list-group-item">Date : <strong><%= @event.start_date.strftime("%d of %B, %Y") %></strong></li>
         <li class="list-group-item">Heure : <strong><%= @event.start_hour %></strong></li>
         <li class="list-group-item">Durée : <strong><%= @event.duration %></strong></li>
-        <li class="list-group-item">Prix: <strong><%= @event.price %>€</strong></li>
+        <li class="list-group-item">Prix : <strong><%= @event.price %>€</strong></li>
+        <li class="list-group-item">Nb de participants : <strong><%= @event.attendances.count %></strong></li>
         </ul>
     
       </div>
@@ -44,20 +51,30 @@
       <thead>
         <tr>
         <th scope="col">#</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">Nom</th>
+        <th scope="col">Participant</th>
         <th scope="col">Age</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Profil</th>
       </tr>
     </thead>
     <tbody>
       <% @attendances.each.with_index(1) do |attendance, index| %>
-        <tr>
-      <th scope="row"><%= index %></th>
-      <th scope="col"><%= attendance.user.first_name %></th>
-      <th scope="col"><%= attendance.user.last_name %></th>
+      <tr>
+      <th scope="col"><%= index %></th>
+      <th scope="col"><%= attendance.user.first_name %> <%= attendance.user.last_name %></th>
+      <th scope="col"><%= attendance.user.age %></th>
+      <th scope="col"><%= attendance.user.genre %></th>
+      
+      <th scope="col">
+        <center>
+        <%= link_to user_path(attendance.user.id) do %>
+          <i class="fas fa-user-circle fa-lg"></i>
+        <% end %>
+        </center>
+        </th>
       </tr>
       <% end %>
-      
+   
       
     </tbody>
   </table>

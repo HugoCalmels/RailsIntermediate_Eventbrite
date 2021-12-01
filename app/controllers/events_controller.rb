@@ -33,10 +33,9 @@ class EventsController < ApplicationController
       event: @event
       )
       @attendance.save
-      redirect_to root_path
+      redirect_to event_path(@event.id), success: "Evènement crée !"
     else
-      @event.errors.full_messages
-      render "new"
+      redirect_to new_event_path, danger: @event.errors.full_messages
     end
   end
 

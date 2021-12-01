@@ -23,11 +23,13 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
-    puts "MMMMMMMMMMMMMMM"
-    puts "THIS IS WHEN WE REACHED **destroy_method**"
-    puts "MMMMMMMMMMMMMMM"
+
+    if current_event.organizer.id == current_user.id
+      redirect_to event_path(current_event.id)
+    else
     @attendance.destroy
     redirect_to event_path(current_event)
+    end
   end
 
   def show
