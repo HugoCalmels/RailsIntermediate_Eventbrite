@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
   def new
     if !current_user
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, warning: "Vous devez posséder un compte, et être connecté pour créer un évènement !"
     end
   end
 

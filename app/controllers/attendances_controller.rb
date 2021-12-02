@@ -4,22 +4,22 @@ class AttendancesController < ApplicationController
 
   def create
     if current_user.nil?
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, warning: "Vous devez posséder un compte, et être connecté pour rejoindre un évènement"
 
     elsif (current_user.first_name == "" || current_user.first_name == nil) ||
       (current_user.last_name == "" || current_user.last_name == nil)
-      redirect_to edit_user_registration_path
+      redirect_to edit_user_registration_path, warning: "Vous devez compléter votre profil pour rejoindre un évènement !"
     elsif current_event.attendances.find_by(user: current_user)
-      redirect_to event_path(current_event.id)
+      redirect_to event_path(current_event.id), warning: "Ca s'active quand ca ?!"
     else
     @attendance = Attendance.new(
       user: current_user,
       event: current_event
     )
-    @attendance.save
-    redirect_to event_path(current_event)
+    if @attendance.save
+    redirect_to event_path(current_event), success: "Vous avez rejoint l'évènement #{current_event.title} !"
     end
-
+  end
   end
 
   def destroy
@@ -27,8 +27,9 @@ class AttendancesController < ApplicationController
     if current_event.organizer.id == current_user.id
       redirect_to event_path(current_event.id)
     else
+    redirect_to event_path(current_event), warning: "Vous avez quitté l'évènement #{current_event.title} !"
     @attendance.destroy
-    redirect_to event_path(current_event)
+    
     end
   end
 

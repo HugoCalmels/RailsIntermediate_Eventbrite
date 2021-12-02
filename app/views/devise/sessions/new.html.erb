@@ -6,6 +6,15 @@
 <h2><strong>Connexion</strong></h2>
 <br />
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <% if resource.nil? %>
+  <div class="alert alert-danger alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <% resource.errors.full_messages.each do |msg| %>
+  
+      <div><%= msg %></div>
+  <% end %>
+  </div>
+  <% end %>
   <div class="form-group">
     <label for="exampleInputEmail1">Adresse email</label>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
@@ -20,6 +29,7 @@
     <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
   </div>
   <% end %>
+  <br />
   <%= f.submit "Connexion", class:"btn btn-lg btn-primary"%>
   <% end %>
 

@@ -6,9 +6,18 @@
     <div class="form-group">
       <div class="form-row justify-content-center text-center">
         <div class="form-group col-md-2">
-          <label for="inputEmail4">Mot de passe</label>
+          <label for="inputEmail4">Nouveau mot de passe</label>
+          <%= password_field_tag(:new_password,nil , class:"form-control") %>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputEmail4">Confirmation du nouveau mot de passe</label>
+          <%= password_field_tag(:new_password_confirmation,nil , class:"form-control") %>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputEmail4">Ancien mot de passe</label>
           <%= password_field_tag(:password,nil , class:"form-control") %>
         </div>
+        
       </div>
     </div>
 
