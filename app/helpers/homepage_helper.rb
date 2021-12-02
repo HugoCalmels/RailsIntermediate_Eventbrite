@@ -28,4 +28,15 @@ module HomepageHelper
     "6 heures",
   ]) 
 end
+
+def array_age  
+  result = ([ ])
+  i = 9
+  91.times do 
+    result << "#{i} ans"
+    i += 1
+  end
+  return result
+end
+
 end

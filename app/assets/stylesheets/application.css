@@ -59,7 +59,7 @@
 
 
 .navbar_link {
-  margin-left: 15px;
+
   color: white;
   font-size: 22px;
 }
@@ -156,11 +156,21 @@
   margin-top: 50px;
 }
 
-.row-event {
-  display: flex;
-}
+
 
 .fa-user-circle {
   color:  rgb(80, 26, 145);
   size: 50px;
 }
+
+
+.navbar-toggler{
+  border: 1px solid white !important;
+  height: 40px !important;
+}
+
+.navbar-toggler:hover{
+  background-color: rgb(136, 75, 209)!important;
+}
+
+
