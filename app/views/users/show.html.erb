@@ -7,3 +7,31 @@
 <%= link_to 'Back', :back, class: "btn btn-sm btn-primary" %>
 <br />
 <%= @user.email %>
+
+
+<% if current_user.id == @user.id %>
+
+<table>
+<tr>
+  <th scope="col"> # </th>
+  <th scope="col">Event name</th>
+  <th scope="col">Start date</th>
+  <th scope="col">Event status</th>
+  <th scope="col">Price</th>
+  <th scope="col">Location</th>
+</tr>
+<tr>
+<% @user_attendances.each.with_index(1) do |el,index| %>
+  <tr>
+  <td scope="row"><%= index %></td>
+  <td scope="row"><%= el.event.title %></td>
+  <td scope="row"><%= el.event.start_date %></td>
+  <td scope="row"><% if el.event.start_date > Time.now %> incoming <% else %> finished <% end %></td>
+  <td scope="row"><%= el.event.location %></td>
+  <td scope="row"><%= link_to "event", event_path(el.event.id)%></td>
+  </tr>
+<% end %>
+
+</table>
+<% else %>
+<% end %>

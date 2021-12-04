@@ -6,23 +6,46 @@
 <% if !@attendance.nil?  %>
   <% if @event.organizer.id  == current_user.id %>
   <% else %>
-  <%= link_to "Quitter", event_attendance_path(@event.id,@attendance.id), method: "delete", data: { confirm: 'Are you sure?'},  class: "btn btn-sm btn-danger" %>
+    <%= link_to "Quitter", event_attendance_path(@event.id,@attendance.id), method: "delete", data: { confirm: 'Are you sure?'},  class: "btn btn-sm btn-danger" %>
   <% end %>
-<% else %>
+  <%= link_to "Retour", root_path,  class: "btn btn-sm btn-primary"%>
+<% elsif @event.price != 0 %>
+  <%= form_tag orders_path do %>
+  <%= hidden_field_tag 'event_id', @event.id %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="Réserver sa place"
+      data-label="Rejoindre"
+      data-amount=<%= (@event.price*100).to_s %>
+      data-email= <%= current_user.email %>
+      data-locale="fr">
+    </script>
+    <%= link_to "Retour", root_path,  class: "btn btn-sm btn-primary"%>
+  <% end %>
+<% elsif @event.price == 0 %>
+<%= link_to "Retour", root_path,  class: "btn btn-sm btn-primary"%>
 <%= link_to "Rejoindre", event_attendances_path(@event.id), method: "post",  class: "btn btn-sm btn-primary" %>
 <% end %>
-<%= link_to "Retour", root_path,  class: "btn btn-sm btn-primary" %>
-
 
 <% if user_signed_in? && ( @event.organizer.id.nil? || @event.organizer.id  == current_user.id )%>
 <%= link_to "Editer", edit_event_path(@event.id),  class: "btn btn-sm btn-primary" %>
 <%= link_to "Supprimer", event_path(@event.id), method: "delete", data: { confirm: 'Etes vous sur?'},  class: "btn btn-sm btn-danger" %>
-
 <% end %>
-<br />
+
+
+<% if !@attendance.nil? && !@attendance.stripe_customer_id.nil?  %>
+<%= link_to "Retour", root_path,  class: "btn btn-sm btn-primary"%>
+  <% else %>
+  <% end %>
 
 </center>
-
 
 
 

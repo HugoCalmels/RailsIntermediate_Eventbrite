@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'email/edit'
   get 'password/edit'
   match '/users',   to: 'users#index',   via: 'get'
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show, :index, :edit, :update]
 
-
+resources :orders, only: [:new, :create]
 
   resources :events do 
     resources :attendances

@@ -2,6 +2,18 @@ class AttendancesController < ApplicationController
   before_action :current_event, only: [:show, :edit, :update, :destroy]
   before_action :current_attendance, only: [:destroy]
 
+  def index
+    puts "MMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMM"
+    puts params
+    puts params
+    puts "MMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMM"
+    create
+  end
+
   def create
     if current_user.nil?
       redirect_to new_user_session_path, warning: "Vous devez posséder un compte, et être connecté pour rejoindre un évènement"
@@ -14,7 +26,8 @@ class AttendancesController < ApplicationController
     else
     @attendance = Attendance.new(
       user: current_user,
-      event: current_event
+      event: current_event,
+      stripe_customer_id: params[:format]
     )
     if @attendance.save
     redirect_to event_path(current_event), success: "Vous avez rejoint l'évènement #{current_event.title} !"

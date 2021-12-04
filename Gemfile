@@ -8,6 +8,7 @@ gem 'dotenv-rails'
 gem 'faker'
 gem 'table_print'
 gem 'devise-i18n'
+gem 'stripe'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

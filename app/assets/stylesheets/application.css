@@ -174,3 +174,31 @@
 }
 
 
+.stripe-button-el {
+
+  text-align: center !important;
+  width: 80px;
+  border-radius: 0;
+  border: none!important;
+  background-image: none!important;
+  background-color: rgb(136, 75, 209)!important;
+}
+
+.stripe-button-el span {
+  display: flex!important;
+  justify-content: center!important;
+  text-align: center !important;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: 100!important;
+  border-radius: 0;
+  font-family: cursive!important;
+  background-image: none!important;
+  background-color: rgb(80, 26, 145)!important;
+
+}
+
+.stripe-button-el span:hover {
+  background-image: none!important;
+  background-color: rgb(136, 75, 209)!important;
+}
