@@ -26,6 +26,7 @@ class EventsController < ApplicationController
       duration: params[:duration],
       organizer: current_user
     )
+    @event.avatar.attach(params[:avatar])
     
     if @event.save
       @attendance = Attendance.new(
@@ -82,5 +83,6 @@ class EventsController < ApplicationController
   def current_attendance
     @attendance = current_event.attendances.find_by(user: current_user)
   end
+  
 
 end

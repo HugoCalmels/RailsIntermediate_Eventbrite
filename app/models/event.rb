@@ -10,6 +10,8 @@ class Event < ApplicationRecord
   validates :location, presence: true, length: { in: 3..30 }
   validates :price, presence: true
   validates :description, length: { maximum: 300 }
+
+  has_one_attached :avatar
 end
 
 
