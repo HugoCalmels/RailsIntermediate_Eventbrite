@@ -202,3 +202,7 @@
   background-image: none!important;
   background-color: rgb(136, 75, 209)!important;
 }
+
+.some-class-name {
+  width: 100%;
+}

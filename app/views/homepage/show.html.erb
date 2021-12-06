@@ -12,6 +12,8 @@
         <div class="card-body">
           <% if event.avatar.attached? %>
             <%= image_tag event.avatar, width: "100%" %>
+            <% else %>
+            <%= image_tag "unnamed", class: 'some-class-name' %>
             <% end %>
           <h5 class="card-title"><strong><%= event.title %></strong></h5>
           <p class="card-text">Date : <%= event.start_date.strftime("%d of %B, %Y") %></p>

@@ -26,7 +26,9 @@ class EventsController < ApplicationController
       duration: params[:duration],
       organizer: current_user
     )
+    if params[:avatar].nil?
     @event.avatar.attach(params[:avatar])
+    end
     
     if @event.save
       @attendance = Attendance.new(
