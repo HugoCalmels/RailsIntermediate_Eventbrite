@@ -12,7 +12,9 @@ class Event < ApplicationRecord
   validates :description, length: { maximum: 300 }
 
   has_one_attached :avatar
-  validates :avatar, presence: true, blob: { content_type: ['image/jpg'], size_range: 1..(5.megabytes) }
+  validates :avatar, attached: true,
+                    content_type: ['image/jpg', 'image/jpeg']
+
 end
 
 

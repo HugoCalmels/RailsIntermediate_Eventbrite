@@ -3,14 +3,6 @@ class AttendancesController < ApplicationController
   before_action :current_attendance, only: [:destroy]
 
   def index
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
-    puts params
-    puts params
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
     create
   end
 
@@ -56,9 +48,6 @@ class AttendancesController < ApplicationController
   end
 
   def current_attendance
-    puts "MMMMMMMMMMMMMMM"
-    puts "THIS IS WHEN WE REACHED **Current_attendance**"
-    puts "MMMMMMMMMMMMMMM"
     @attendance = current_event.attendances.find_by(user: current_user)
   end
     

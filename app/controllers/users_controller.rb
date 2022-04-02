@@ -2,21 +2,16 @@ class UsersController < ApplicationController
   include Devise::Controllers::Helpers
 
   def index
-    puts "MMMMMMMMMMMMMMMM"
     @users = User.all
     puts @users
-    puts "MMMMMMMMMMMMMM"
   end
 
   def show
     @user = User.find(params[:id])
     @user_attendances = Attendance.where(user_id: current_user.id).sort { |a,b| a.event.start_date <=> b.event.start_date }
     @user_attendances.map do |el|
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
     puts el.event.start_date
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
     puts Time.now
-    puts "MMMMMMMMMMMMMMMMMMMMMMM"
     end
   end
 
@@ -56,13 +51,6 @@ class UsersController < ApplicationController
       end
     end
 
-
-
-
-    
-
   end
-
-
 
 end

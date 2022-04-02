@@ -10,7 +10,7 @@ gem 'table_print'
 gem 'devise-i18n'
 gem 'stripe'
 gem 'aws-sdk-s3', '~> 1.109'
-gem 'activestorage-validator'
+gem 'active_storage_validations', '~> 0.9.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'

@@ -18,7 +18,6 @@ class EventsController < ApplicationController
   end
 
   def create 
-
     @event = Event.new(
       title: params[:title],
       description: params[:description],
@@ -29,23 +28,8 @@ class EventsController < ApplicationController
       duration: params[:duration],
       organizer: current_user
     )
-
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-    puts  params[:avatar]
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-    puts "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-
-    
-    if params[:avatar].nil?
-
       @event.avatar.attach(params[:avatar])
-      end
-    
-    
+
     if @event.save
       @attendance = Attendance.new(
       user: current_user,
