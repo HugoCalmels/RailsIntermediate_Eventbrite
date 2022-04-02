@@ -206,3 +206,19 @@
 .some-class-name {
   width: 100%;
 }
+
+.table-tr{
+  border: 2px solid black;
+  padding: .5rem;
+}
+.table-td{
+  border: 2px solid black;
+  padding: .5rem;
+}
+.table-th{
+  border: 2px solid black;
+  padding: .5rem;
+}
+.link-profile-event{
+  color: rgb(80, 26, 145);
+}

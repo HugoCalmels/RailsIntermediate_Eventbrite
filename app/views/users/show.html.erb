@@ -6,29 +6,30 @@
 <% end %>
 <%= link_to 'Back', :back, class: "btn btn-sm btn-primary" %>
 <br />
-<%= @user.email %>
 
 
 <% if current_user.id == @user.id %>
-
+<br />
 <table>
 <tr>
-  <th scope="col"> # </th>
-  <th scope="col">Event name</th>
-  <th scope="col">Start date</th>
-  <th scope="col">Event status</th>
-  <th scope="col">Price</th>
-  <th scope="col">Location</th>
+  <th class="table-th scope="col"> # </th>
+  <th class="table-th scope="col">Event name</th>
+  <th class="table-th scope="col">Start date</th>
+  <th class="table-th scope="col">Event status</th>
+  <th class="table-th scope="col">Price</th>
+  <th class="table-th scope="col">Location</th>
+  <th class="table-th scope="col">Link</th>
 </tr>
 <tr>
 <% @user_attendances.each.with_index(1) do |el,index| %>
-  <tr>
-  <td scope="row"><%= index %></td>
-  <td scope="row"><%= el.event.title %></td>
-  <td scope="row"><%= el.event.start_date %></td>
-  <td scope="row"><% if el.event.start_date > Time.now %> incoming <% else %> finished <% end %></td>
-  <td scope="row"><%= el.event.location %></td>
-  <td scope="row"><%= link_to "event", event_path(el.event.id)%></td>
+  <tr class="table-tr">
+  <td class="table-td" scope="row"><%= index %></td>
+  <td class="table-td" scope="row"><%= el.event.title %></td>
+  <td class="table-td" scope="row"><%= el.event.start_date %></td>
+  <td class="table-td" scope="row"><% if el.event.start_date > Time.now %> incoming <% else %> finished <% end %></td>
+  <td class="table-td" scope="row"><%= el.event.price %></td>
+  <td class="table-td" scope="row"><%= el.event.location %></td>
+  <td class="table-td" scope="row"><%= link_to "event", event_path(el.event.id), class: "link-profile-event"%></td>
   </tr>
 <% end %>
 
