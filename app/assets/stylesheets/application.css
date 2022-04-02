@@ -207,34 +207,9 @@
   width: 100%;
 }
 
-.table-tr{
-  border: 2px solid black;
-  padding: .5rem;
-}
-.table-td{
-  border: 2px solid black;
-  padding: .5rem;
-}
-.table-th{
-  border: 2px solid black;
-  padding: .5rem;
-}
-.link-profile-event{
-  color: rgb(80, 26, 145);
-}
 
-
-@media all and (max-width: 600px){
-  .table-tr{
-    font-size: .7rem;
-    padding: .1rem;
-  }
-  .table-td{
-    font-size: .7rem;
-    padding: .1rem;
-  }
-  .table-th{
-    font-size: .7rem;
-    padding: .1rem;
-  }
+.card-body img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
 }

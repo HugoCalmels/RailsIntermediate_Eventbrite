@@ -1,3 +1,36 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.table-tr{
+  border: 2px solid black;
+  padding: .5rem;
+}
+.table-td{
+  border: 2px solid black;
+  padding: .5rem;
+}
+.table-th{
+  border: 2px solid black;
+  padding: .5rem;
+}
+.link-profile-event{
+  color: rgb(80, 26, 145);
+}
+
+
+@media all and (max-width: 600px){
+  .table-tr{
+    font-size: .7rem;
+    padding: .1rem;
+  }
+  .table-td{
+    font-size: .7rem;
+    padding: .1rem;
+  }
+  .table-th{
+    font-size: .7rem;
+    padding: .1rem;
+  }
+}
