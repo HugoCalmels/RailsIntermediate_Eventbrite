@@ -13,9 +13,9 @@ aux particpants de cet évènement.
 Disponible en ligne : https://eventbrite-plus.herokuapp.com/
 
 Pour installer localement :
-$ bundle exec rails webpacker:install
-$ bundle install
-$ rails db:create
-$ rails db:migrate
-$ rails db:seed
-$ rails s
+- $ bundle exec rails webpacker:install
+- $ bundle install
+- $ rails db:create
+- $ rails db:migrate
+- $ rails db:seed
+- $ rails s
