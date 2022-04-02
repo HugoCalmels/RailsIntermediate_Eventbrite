@@ -1,0 +1,41 @@
+ 
+
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top navbar-custom">
+    <%= link_to "E", root_path, class: 'navbar_link_homepage_icon' %>&nbsp;&nbsp;&nbsp;
+ 
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation" style="position:absolute;right:60px;top:10px;">
+    <span class="hamburger-menu" role="button" ><i class="fa fa-bars" aria-hidden="true"style="color:white;"></i></span>
+    </button>
+    <div class="dropdown justify-content-end" style="position:absolute;right:8px;top:8px;">
+  <button class="dropbtn"><i class="fas fa-power-off"></i></button>
+    <div class="dropdown-content">
+      <% if user_signed_in? %>
+        <%= link_to "Profil", user_path(current_user.id)%>
+        <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Connexion", new_user_session_path %>
+        <%= link_to "Inscription", new_user_registration_path %>
+      <% end %>
+    </div>
+  </div>
+  
+    <div class="collapse navbar-collapse"data-toggle="collapse" data-target=".navbar-collapse"  id="navbarsExample03" >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse">
+          <%= link_to "Home", root_path, class: 'navbar_link' %>
+          &nbsp;&nbsp;
+        </li>
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse">
+          <%= link_to "Smth", root_path, class: 'navbar_link' %>
+          &nbsp;&nbsp;
+        </li>
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse">
+          <%= link_to "SmthElse", root_path, class: 'navbar_link' %>
+          &nbsp;&nbsp;
+        </li>
+        
+      </ul>
+      
+  
+  </nav>
