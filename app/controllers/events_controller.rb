@@ -12,8 +12,7 @@ class EventsController < ApplicationController
   def new
     if !current_user
       redirect_to new_user_session_path, warning: "Vous devez posséder un compte, et être connecté pour créer un évènement !"
-    elsif (current_user.first_name == "" || current_user.first_name == nil) ||
-      (current_user.last_name == "" || current_user.last_name == nil)
+    elsif (current_user.first_name == "" || current_user.first_name == nil) 
       redirect_to edit_user_registration_path, warning: "Vous devez compléter votre profil pour rejoindre un évènement !"
     end
   end
