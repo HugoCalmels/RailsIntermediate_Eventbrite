@@ -1,5 +1,5 @@
 <br />
-<center><h3>Profil</h3>
+<center><h3>Profil de <%= @user.first_name %> <%= @user.last_name %></h3>
 <br />
 <% if user_signed_in? && current_user.id == @user.id %>
 <%= link_to "Editer profil", edit_user_registration_path, class: "btn btn-sm btn-primary" %>
